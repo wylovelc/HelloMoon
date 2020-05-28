@@ -1,5 +1,6 @@
 package com.bignerdranch.android.hellomoon;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,26 +16,40 @@ public class HelloMoonFragment extends Fragment {
 
     private Button mPlayButton;
     private Button mStopButton;
+    private Button mPauseButton;
+    private MediaPlayer player;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup parent,
                              @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_hello_moon,parent,false);
+        View v = inflater.inflate(R.layout.fragment_hello_moon, parent, false);
 
-        mPlayButton = (Button)v.findViewById(R.id.hellomoon_playButton);
-        mPlayButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        mPlayButton = (Button) v.findViewById(R.id.hellomoon_playButton);
+        mPlayButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 mPlayer.play(getActivity());
+                mPauseButton.setEnabled(true);
             }
         });
 
-        mStopButton = (Button)v.findViewById(R.id.hellomoon_stopButton);
+        mStopButton = (Button) v.findViewById(R.id.hellomoon_stopButton);
         mStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mPlayer.stop();
+                mPauseButton.setEnabled(false);
             }
         });
+
+        mPauseButton = (Button) v.findViewById(R.id.hellomoon_pauseButton);
+        mPauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPlayer.pause(getActivity());
+            }
+        });
+
 
         return v;
     }
@@ -44,5 +59,4 @@ public class HelloMoonFragment extends Fragment {
         super.onDestroy();
         mPlayer.stop();
     }
-
 }

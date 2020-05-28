@@ -2,16 +2,19 @@ package com.bignerdranch.android.hellomoon;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.widget.Button;
 
 public class AudioPlayer {
 
     private MediaPlayer mPlayer;
+    private boolean isPause = false;
 
-    public void stop(){
+    public boolean stop(){
         if(mPlayer !=null){
             mPlayer.release();
             mPlayer=null;
         }
+        return false;
     }
 
     public void play(Context c){
@@ -27,4 +30,19 @@ public class AudioPlayer {
         });
         mPlayer.start();
     }
+
+    public void pause(Context c){
+        if(mPlayer.isPlaying() &&! isPause){
+            mPlayer.pause();
+            isPause = true;
+        }else {
+            mPlayer.start();
+            isPause = false;
+        }
+
+    }
+
+
+
+
 }
