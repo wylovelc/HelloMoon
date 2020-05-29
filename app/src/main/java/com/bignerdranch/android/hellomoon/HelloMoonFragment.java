@@ -43,13 +43,13 @@ public class HelloMoonFragment extends Fragment {
         });
 
         mPauseButton = (Button) v.findViewById(R.id.hellomoon_pauseButton);
+        mPauseButton.setEnabled(false);
         mPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mPlayer.pause(getActivity());
             }
         });
-
 
         return v;
     }
