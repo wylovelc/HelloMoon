@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">-land尼尔·阿姆斯特朗登上月球,上面冷吗？</string>
+    <string name="hellomoon_play">开始</string>
+    <string name="hellomoon_pause">暂停</string>
+    <string name="hellomoon_stop">停止</string>
+    <string name="hellomoon_description">尼尔·阿姆斯特朗登上月球</string>
+</resources>
